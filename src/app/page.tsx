@@ -35,8 +35,8 @@ export default function Home() {
         {/* Featured Case Studies */}
         <section className="py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">Featured Case Studies</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Featured Case Studies</h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Explore some of our most impactful projects and the results we've achieved for our clients.
             </p>
           </div>
@@ -67,42 +67,122 @@ export default function Home() {
                 link: "/case-studies/mobile-app"
               }
             ].map((study, index) => (
-              <div key={index} className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300">
+              <div key={index} className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-all duration-300">
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white">
-                    <div className="absolute inset-0 bg-gray-500/5 transform group-hover:scale-105 transition-transform duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-gray-900">
+                    <div className="absolute inset-0 bg-gray-500/5 dark:bg-white/5 transform group-hover:scale-105 transition-transform duration-500"></div>
                   </div>
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 text-sm font-medium bg-white/90 text-gray-600 rounded-full">
+                    <span className="px-3 py-1 text-sm font-medium bg-white/90 dark:bg-gray-900/90 text-gray-600 dark:text-gray-400 rounded-full">
                       {study.category}
                     </span>
                   </div>
                 </div>
                 <div className="p-6">
                   <div className="mb-4">
-                    <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-gray-600 transition-colors">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
                       {study.title}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-gray-400">
                       {study.description}
                     </p>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       <div className="text-sm">
-                        <span className="text-gray-500">Client:</span>
-                        <span className="ml-1 font-medium text-gray-900">{study.client}</span>
+                        <span className="text-gray-500 dark:text-gray-400">Client:</span>
+                        <span className="ml-1 font-medium text-gray-900 dark:text-white">{study.client}</span>
                       </div>
                       <div className="text-sm">
-                        <span className="text-gray-500">Year:</span>
-                        <span className="ml-1 font-medium text-gray-900">{study.year}</span>
+                        <span className="text-gray-500 dark:text-gray-400">Year:</span>
+                        <span className="ml-1 font-medium text-gray-900 dark:text-white">{study.year}</span>
                       </div>
                     </div>
                     <Link 
                       href={study.link}
-                      className="inline-flex items-center text-gray-600 hover:text-gray-900"
+                      className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     >
                       View Case Study
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Featured Content */}
+        <section className="py-16 border-t border-gray-100 dark:border-gray-800">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Featured Content</h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Insights and thoughts on design, development, and digital transformation.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "The Impact of Microinteractions",
+                category: "UX Design",
+                date: "Feb 16, 2024",
+                readTime: "5 min read",
+                excerpt: "Discover how small interactions can make a big difference in your digital product's user experience.",
+                link: "/blog/microinteractions-impact"
+              },
+              {
+                title: "Building Scalable Design Systems",
+                category: "Development",
+                date: "Feb 14, 2024",
+                readTime: "7 min read",
+                excerpt: "Learn the key principles behind creating design systems that grow with your product.",
+                link: "/blog/scalable-design-systems"
+              },
+              {
+                title: "The Future of Web Animation",
+                category: "Trends",
+                date: "Feb 12, 2024",
+                readTime: "4 min read",
+                excerpt: "Exploring the latest trends and techniques in web animation and motion design.",
+                link: "/blog/web-animation-future"
+              }
+            ].map((post, index) => (
+              <div key={index} className="group bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-all duration-300">
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-gray-900">
+                    <div className="absolute inset-0 bg-gray-500/5 dark:bg-white/5 transform group-hover:scale-105 transition-transform duration-500"></div>
+                  </div>
+                  <div className="absolute bottom-4 left-4">
+                    <span className="px-3 py-1 text-sm font-medium bg-white/90 dark:bg-gray-900/90 text-gray-600 dark:text-gray-400 rounded-full">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="text-sm text-gray-500 dark:text-gray-500">
+                      {post.readTime}
+                    </span>
+                  </div>
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500 dark:text-gray-500">
+                      {post.date}
+                    </span>
+                    <Link 
+                      href={post.link}
+                      className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                    >
+                      Read More
                       <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
@@ -231,86 +311,6 @@ export default function Home() {
                 </ul>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Featured Content */}
-        <section className="py-16 border-t border-gray-100">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-gray-900">Featured Content</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Insights and thoughts on design, development, and digital transformation.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "The Impact of Microinteractions",
-                category: "UX Design",
-                date: "Feb 16, 2024",
-                readTime: "5 min read",
-                excerpt: "Discover how small interactions can make a big difference in your digital product's user experience.",
-                link: "/blog/microinteractions-impact"
-              },
-              {
-                title: "Building Scalable Design Systems",
-                category: "Development",
-                date: "Feb 14, 2024",
-                readTime: "7 min read",
-                excerpt: "Learn the key principles behind creating design systems that grow with your product.",
-                link: "/blog/scalable-design-systems"
-              },
-              {
-                title: "The Future of Web Animation",
-                category: "Trends",
-                date: "Feb 12, 2024",
-                readTime: "4 min read",
-                excerpt: "Exploring the latest trends and techniques in web animation and motion design.",
-                link: "/blog/web-animation-future"
-              }
-            ].map((post, index) => (
-              <div key={index} className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300">
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white">
-                    <div className="absolute inset-0 bg-gray-500/5 transform group-hover:scale-105 transition-transform duration-500"></div>
-                  </div>
-                  <div className="absolute bottom-4 left-4">
-                    <span className="px-3 py-1 text-sm font-medium bg-white/90 text-gray-600 rounded-full">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="text-sm text-gray-500">
-                      {post.readTime}
-                    </span>
-                  </div>
-                  <div className="mb-4">
-                    <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-gray-600 transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {post.excerpt}
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">
-                      {post.date}
-                    </span>
-                    <Link 
-                      href={post.link}
-                      className="inline-flex items-center text-gray-600 hover:text-gray-900"
-                    >
-                      Read More
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 
