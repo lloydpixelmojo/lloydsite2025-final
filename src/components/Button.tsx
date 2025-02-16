@@ -1,11 +1,9 @@
 import { ButtonHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
-import Link from 'next/link';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
-  href?: string;
 }
 
 const variantStyles = {
@@ -20,33 +18,22 @@ const sizeStyles = {
   lg: 'px-8 py-4 text-lg'
 };
 
-const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-btn transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
+const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
 
 export default function Button({
   variant = 'primary',
   size = 'md',
   className,
-  href,
   ...props
 }: ButtonProps) {
-  const classes = twMerge(
-    baseStyles,
-    variantStyles[variant],
-    sizeStyles[size],
-    className
-  );
-
-  if (href) {
-    return (
-      <a href={href} className={classes} {...props}>
-        {props.children}
-      </a>
-    );
-  }
-
   return (
     <button
-      className={classes}
+      className={twMerge(
+        baseStyles,
+        variantStyles[variant],
+        sizeStyles[size],
+        className
+      )}
       {...props}
     />
   );

@@ -2,6 +2,7 @@
 
 import { Fragment, useState } from 'react';
 import { Dialog, Transition, Tab } from '@headlessui/react';
+import Button from './Button';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 interface AssessmentPanelProps {
@@ -10,9 +11,15 @@ interface AssessmentPanelProps {
 }
 
 interface Question {
-  id: number;
+  id: string;
   text: string;
-  options: { id: number; text: string; score: number }[];
+  options: { text: string; score: number }[];
+}
+
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
 }
 
 const assessmentTypes = [
@@ -21,33 +28,33 @@ const assessmentTypes = [
     description: 'Evaluate your user interface and experience design maturity',
     questions: [
       {
-        id: 1,
+        id: 'ux1',
         text: 'How often do you conduct user research?',
         options: [
-          { id: 1, text: 'Never', score: 0 },
-          { id: 2, text: 'Occasionally', score: 5 },
-          { id: 3, text: 'For major features', score: 8 },
-          { id: 4, text: 'Regularly', score: 10 }
+          { text: 'Never', score: 0 },
+          { text: 'Occasionally', score: 5 },
+          { text: 'For major features', score: 8 },
+          { text: 'Regularly', score: 10 }
         ]
       },
       {
-        id: 2,
+        id: 'ux2',
         text: 'Do you have a design system in place?',
         options: [
-          { id: 1, text: 'No design system', score: 0 },
-          { id: 2, text: 'Basic style guide', score: 5 },
-          { id: 3, text: 'Partial design system', score: 8 },
-          { id: 4, text: 'Complete design system', score: 10 }
+          { text: 'No design system', score: 0 },
+          { text: 'Basic style guide', score: 5 },
+          { text: 'Partial design system', score: 8 },
+          { text: 'Complete design system', score: 10 }
         ]
       },
       {
-        id: 3,
+        id: 'ux3',
         text: 'How do you handle accessibility?',
         options: [
-          { id: 1, text: 'Not considered', score: 0 },
-          { id: 2, text: 'Basic compliance', score: 5 },
-          { id: 3, text: 'WCAG AA standard', score: 8 },
-          { id: 4, text: 'WCAG AAA standard', score: 10 }
+          { text: 'Not considered', score: 0 },
+          { text: 'Basic compliance', score: 5 },
+          { text: 'WCAG AA standard', score: 8 },
+          { text: 'WCAG AAA standard', score: 10 }
         ]
       }
     ]
@@ -57,33 +64,33 @@ const assessmentTypes = [
     description: 'Assess your brand strategy and identity effectiveness',
     questions: [
       {
-        id: 1,
+        id: 'brand1',
         text: 'How consistent is your brand across channels?',
         options: [
-          { id: 1, text: 'Inconsistent', score: 0 },
-          { id: 2, text: 'Somewhat consistent', score: 5 },
-          { id: 3, text: 'Mostly consistent', score: 8 },
-          { id: 4, text: 'Fully consistent', score: 10 }
+          { text: 'Inconsistent', score: 0 },
+          { text: 'Somewhat consistent', score: 5 },
+          { text: 'Mostly consistent', score: 8 },
+          { text: 'Fully consistent', score: 10 }
         ]
       },
       {
-        id: 2,
+        id: 'brand2',
         text: 'Do you have brand guidelines?',
         options: [
-          { id: 1, text: 'No guidelines', score: 0 },
-          { id: 2, text: 'Basic guidelines', score: 5 },
-          { id: 3, text: 'Detailed guidelines', score: 8 },
-          { id: 4, text: 'Comprehensive guidelines', score: 10 }
+          { text: 'No guidelines', score: 0 },
+          { text: 'Basic guidelines', score: 5 },
+          { text: 'Detailed guidelines', score: 8 },
+          { text: 'Comprehensive guidelines', score: 10 }
         ]
       },
       {
-        id: 3,
+        id: 'brand3',
         text: 'How often do you review brand performance?',
         options: [
-          { id: 1, text: 'Never', score: 0 },
-          { id: 2, text: 'Yearly', score: 5 },
-          { id: 3, text: 'Quarterly', score: 8 },
-          { id: 4, text: 'Monthly', score: 10 }
+          { text: 'Never', score: 0 },
+          { text: 'Yearly', score: 5 },
+          { text: 'Quarterly', score: 8 },
+          { text: 'Monthly', score: 10 }
         ]
       }
     ]
@@ -93,91 +100,78 @@ const assessmentTypes = [
     description: 'Measure your content marketing and SEO performance',
     questions: [
       {
-        id: 1,
+        id: 'content1',
         text: 'How often do you publish content?',
         options: [
-          { id: 1, text: 'Rarely', score: 0 },
-          { id: 2, text: 'Monthly', score: 5 },
-          { id: 3, text: 'Weekly', score: 8 },
-          { id: 4, text: 'Multiple times per week', score: 10 }
+          { text: 'Rarely', score: 0 },
+          { text: 'Monthly', score: 5 },
+          { text: 'Weekly', score: 8 },
+          { text: 'Multiple times per week', score: 10 }
         ]
       },
       {
-        id: 2,
+        id: 'content2',
         text: 'Do you have an SEO strategy?',
         options: [
-          { id: 1, text: 'No strategy', score: 0 },
-          { id: 2, text: 'Basic optimization', score: 5 },
-          { id: 3, text: 'Detailed strategy', score: 8 },
-          { id: 4, text: 'Comprehensive strategy', score: 10 }
+          { text: 'No strategy', score: 0 },
+          { text: 'Basic optimization', score: 5 },
+          { text: 'Detailed strategy', score: 8 },
+          { text: 'Comprehensive strategy', score: 10 }
         ]
       },
       {
-        id: 3,
+        id: 'content3',
         text: 'How do you track content performance?',
         options: [
-          { id: 1, text: 'No tracking', score: 0 },
-          { id: 2, text: 'Basic analytics', score: 5 },
-          { id: 3, text: 'Multiple metrics', score: 8 },
-          { id: 4, text: 'Advanced analytics', score: 10 }
+          { text: 'No tracking', score: 0 },
+          { text: 'Basic analytics', score: 5 },
+          { text: 'Multiple metrics', score: 8 },
+          { text: 'Advanced analytics', score: 10 }
         ]
       }
     ]
   }
 ];
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
-  const [currentStep, setCurrentStep] = useState<'questions' | 'preview' | 'form'>('questions');
   const [selectedTab, setSelectedTab] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, number>>({});
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: ''
-  });
+  const [currentStep, setCurrentStep] = useState<'questions' | 'results' | 'contact'>('questions');
+  const [answers, setAnswers] = useState<{ [key: string]: number }>({});
+  const [formData, setFormData] = useState<FormData>({ name: '', email: '', company: '' });
 
-  const handleAnswerSelect = (questionId: number, score: number) => {
+  const handleAnswer = (questionId: string, score: number) => {
     setAnswers(prev => ({ ...prev, [questionId]: score }));
   };
 
   const calculateScore = () => {
-    const totalQuestions = assessmentTypes[selectedTab].questions.length;
-    const totalScore = Object.values(answers).reduce((sum, score) => sum + score, 0);
-    return Math.round((totalScore / (totalQuestions * 10)) * 100);
+    const scores = Object.values(answers);
+    return Math.round((scores.reduce((a, b) => a + b, 0) / (scores.length * 10)) * 100);
+  };
+
+  const isQuestionnaireComplete = () => {
+    const requiredQuestions = assessmentTypes[selectedTab].questions;
+    return requiredQuestions.every(q => answers[q.id] !== undefined);
   };
 
   const handleNext = () => {
     if (currentStep === 'questions') {
-      setCurrentStep('preview');
-    } else if (currentStep === 'preview') {
-      setCurrentStep('form');
+      setCurrentStep('results');
+    } else if (currentStep === 'results') {
+      setCurrentStep('contact');
     }
   };
 
   const handleBack = () => {
-    if (currentStep === 'preview') {
+    if (currentStep === 'results') {
       setCurrentStep('questions');
-    } else if (currentStep === 'form') {
-      setCurrentStep('preview');
+    } else if (currentStep === 'contact') {
+      setCurrentStep('results');
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data and assessment results to your backend
     setIsOpen(false);
-    // Reset state
-    setCurrentStep('questions');
-    setAnswers({});
-    setFormData({ name: '', email: '', company: '' });
-  };
-
-  const isQuestionnaireComplete = () => {
-    return assessmentTypes[selectedTab].questions.every(q => answers[q.id] !== undefined);
   };
 
   return (
@@ -185,14 +179,14 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
       <Dialog as="div" className="relative z-50" onClose={setIsOpen}>
         <Transition.Child
           as={Fragment}
-          enter="ease-in-out duration-500"
+          enter="ease-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
-          leave="ease-in-out duration-500"
+          leave="ease-in duration-200"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          <div className="fixed inset-0 bg-gray-500 dark:bg-gray-900 bg-opacity-75 dark:bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-hidden">
@@ -209,40 +203,38 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white dark:bg-gray-900 shadow-xl">
-                    <div className="px-4 py-4 sm:px-6 border-b border-gray-200 dark:border-gray-800">
+                    <div className="px-4 sm:px-6 py-4 border-b border-gray-200 dark:border-gray-800">
                       <div className="flex items-center justify-between">
-                        <Dialog.Title className="text-xl font-semibold leading-6 text-gray-900 dark:text-white">
+                        <Dialog.Title className="text-xl font-semibold text-gray-900 dark:text-white">
                           Free Assessment
                         </Dialog.Title>
-                        <div className="ml-3 flex h-7 items-center">
-                          <button
-                            type="button"
-                            className="rounded-md text-gray-400 hover:text-gray-500 focus:outline-none"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <span className="sr-only">Close panel</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                          </button>
-                        </div>
+                        <button
+                          type="button"
+                          className="rounded-lg p-2 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <span className="sr-only">Close panel</span>
+                          <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+                        </button>
                       </div>
                     </div>
 
                     <div className="relative flex-1 px-4 sm:px-6">
                       <div className="py-4">
                         {currentStep === 'questions' && (
-                          <>
+                          <div>
                             <Tab.Group selectedIndex={selectedTab} onChange={setSelectedTab}>
-                              <Tab.List className="flex space-x-1 rounded-xl bg-brand-100 dark:bg-brand-900/20 p-1">
+                              <Tab.List className="flex space-x-1 rounded-lg bg-gray-100 dark:bg-gray-800 p-1">
                                 {assessmentTypes.map((type) => (
                                   <Tab
                                     key={type.name}
                                     className={({ selected }) =>
                                       classNames(
-                                        'w-full rounded-lg py-3 text-sm font-medium leading-5',
-                                        'ring-white/60 ring-offset-2 ring-offset-brand-400 focus:outline-none focus:ring-2',
+                                        'w-full rounded-md py-2 text-sm font-medium',
+                                        'focus:outline-none focus:ring-2 focus:ring-brand',
                                         selected
-                                          ? 'bg-white dark:bg-gray-800 text-brand dark:text-brand-400 shadow'
-                                          : 'text-gray-600 dark:text-gray-400 hover:bg-white/[0.12] hover:text-brand dark:hover:text-brand-400'
+                                          ? 'bg-white dark:bg-gray-900 text-brand dark:text-brand-400 shadow-sm'
+                                          : 'text-gray-600 dark:text-gray-400 hover:text-brand dark:hover:text-brand-400'
                                       )
                                     }
                                   >
@@ -250,28 +242,25 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                   </Tab>
                                 ))}
                               </Tab.List>
-                              <Tab.Panels className="mt-8">
-                                {assessmentTypes.map((type, idx) => (
-                                  <Tab.Panel
-                                    key={type.name}
-                                    className={classNames(
-                                      'rounded-xl bg-white dark:bg-gray-800 p-6',
-                                      'ring-white/60 ring-offset-2 ring-offset-brand-400 focus:outline-none focus:ring-2'
-                                    )}
-                                  >
-                                    <div className="space-y-6">
+                              <Tab.Panels className="mt-4">
+                                {assessmentTypes.map((type) => (
+                                  <Tab.Panel key={type.name}>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                                      {type.description}
+                                    </p>
+                                    <div className="space-y-4">
                                       {type.questions.map((question) => (
-                                        <div key={question.id} className="space-y-3">
-                                          <h3 className="text-base font-medium text-gray-900 dark:text-white">
+                                        <div key={question.id} className="space-y-2">
+                                          <h4 className="text-sm font-medium text-gray-900 dark:text-white">
                                             {question.text}
-                                          </h3>
+                                          </h4>
                                           <div className="space-y-2">
                                             {question.options.map((option) => (
                                               <button
-                                                key={option.id}
-                                                onClick={() => handleAnswerSelect(question.id, option.score)}
+                                                key={option.text}
+                                                onClick={() => handleAnswer(question.id, option.score)}
                                                 className={classNames(
-                                                  'w-full text-left px-3 py-2 text-sm rounded-lg border transition-colors',
+                                                  'w-full text-left px-3 py-2 text-sm rounded-md border transition-colors',
                                                   answers[question.id] === option.score
                                                     ? 'border-brand bg-brand-50 dark:bg-brand-900/20'
                                                     : 'border-gray-200 dark:border-gray-700 hover:border-brand'
@@ -288,84 +277,72 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                 ))}
                               </Tab.Panels>
                             </Tab.Group>
-                            <div className="mt-8">
-                              <button
+                            <div className="mt-6 flex justify-end">
+                              <Button
                                 onClick={handleNext}
                                 disabled={!isQuestionnaireComplete()}
-                                className={classNames(
-                                  'w-full rounded-lg px-4 py-3 text-sm font-semibold text-white shadow-sm',
-                                  isQuestionnaireComplete()
-                                    ? 'bg-brand hover:bg-brand-600'
-                                    : 'bg-gray-400 cursor-not-allowed'
-                                )}
+                                size="sm"
                               >
-                                Preview Results
-                              </button>
+                                View Results
+                              </Button>
                             </div>
-                          </>
+                          </div>
                         )}
 
-                        {currentStep === 'preview' && (
-                          <div className="space-y-6">
-                            <div className="text-center">
-                              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-                                Your {assessmentTypes[selectedTab].name} Score
-                              </h3>
-                              <div className="text-5xl font-bold text-brand mb-4">
+                        {currentStep === 'results' && (
+                          <div>
+                            <div className="text-center mb-6">
+                              <div className="text-4xl font-bold text-brand mb-2">
                                 {calculateScore()}%
                               </div>
-                              <p className="text-gray-600 dark:text-gray-300">
-                                Based on your answers, here's how your {assessmentTypes[selectedTab].name.toLowerCase()} strategy measures up.
+                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                                {assessmentTypes[selectedTab].name} Score
                               </p>
                             </div>
-                            <div className="space-y-4">
-                              <h4 className="text-lg font-medium text-gray-900 dark:text-white">
-                                Key Insights:
-                              </h4>
+
+                            <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mb-6">
+                              <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">Response Summary</h4>
                               <ul className="space-y-2">
                                 {assessmentTypes[selectedTab].questions.map((question) => (
-                                  <li key={question.id} className="flex items-start gap-2">
-                                    <svg className="h-6 w-6 flex-none text-brand mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                                  <li key={question.id} className="flex items-start gap-2 text-sm">
+                                    <svg className="h-5 w-5 flex-none text-brand mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    <span className="text-gray-600 dark:text-gray-300">
-                                      {question.options.find(opt => opt.score === answers[question.id])?.text}
+                                    <span className="text-gray-600 dark:text-gray-400">
+                                      {question.text}
                                     </span>
                                   </li>
                                 ))}
                               </ul>
                             </div>
-                            <div className="flex gap-4">
-                              <button
+
+                            <div className="flex justify-between">
+                              <Button
+                                variant="outline"
                                 onClick={handleBack}
-                                className="w-1/2 rounded-lg px-4 py-3 text-sm font-semibold border-2 border-gray-200 dark:border-gray-700 hover:border-brand"
+                                size="sm"
                               >
                                 Back
-                              </button>
-                              <button
+                              </Button>
+                              <Button
                                 onClick={handleNext}
-                                className="w-1/2 rounded-lg px-4 py-3 text-sm font-semibold text-white bg-brand hover:bg-brand-600"
+                                size="sm"
                               >
                                 Get Full Report
-                              </button>
+                              </Button>
                             </div>
                           </div>
                         )}
 
-                        {currentStep === 'form' && (
-                          <div className="space-y-6">
-                            <div>
-                              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                                Get Your Full Report
-                              </h3>
-                              <p className="text-sm text-gray-600 dark:text-gray-300">
-                                Enter your details below and we'll send you a comprehensive report with actionable recommendations.
-                              </p>
-                            </div>
+                        {currentStep === 'contact' && (
+                          <div>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                              Enter your details to receive a comprehensive report with actionable insights.
+                            </p>
                             <form onSubmit={handleSubmit} className="space-y-4">
                               <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                  Full Name
+                                  Name
                                 </label>
                                 <input
                                   type="text"
@@ -373,13 +350,13 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                   required
                                   value={formData.name}
                                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                                  className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand focus:border-transparent"
                                   placeholder="John Doe"
                                 />
                               </div>
                               <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                  Email Address
+                                  Email
                                 </label>
                                 <input
                                   type="email"
@@ -387,13 +364,13 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                   required
                                   value={formData.email}
                                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                                  className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand focus:border-transparent"
                                   placeholder="john@example.com"
                                 />
                               </div>
                               <div>
                                 <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                                  Company Name
+                                  Company
                                 </label>
                                 <input
                                   type="text"
@@ -401,24 +378,21 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                   required
                                   value={formData.company}
                                   onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                                  className="w-full rounded-md border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand focus:border-transparent"
                                   placeholder="Acme Inc."
                                 />
                               </div>
-                              <div className="flex gap-3 pt-2">
-                                <button
-                                  type="button"
+                              <div className="flex justify-between">
+                                <Button
+                                  variant="outline"
                                   onClick={handleBack}
-                                  className="w-1/2 rounded-lg px-3 py-2 text-sm font-medium border border-gray-300 dark:border-gray-600 hover:border-brand"
+                                  size="sm"
                                 >
                                   Back
-                                </button>
-                                <button
-                                  type="submit"
-                                  className="w-1/2 rounded-lg px-3 py-2 text-sm font-medium text-white bg-brand hover:bg-brand-600"
-                                >
+                                </Button>
+                                <Button type="submit" size="sm">
                                   Send Report
-                                </button>
+                                </Button>
                               </div>
                             </form>
                           </div>
@@ -434,4 +408,8 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
       </Dialog>
     </Transition.Root>
   );
+}
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
 }

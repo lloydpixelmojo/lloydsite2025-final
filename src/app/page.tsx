@@ -14,58 +14,61 @@ export default function Home() {
 
   const featuredCaseStudies: CaseStudy[] = [
     {
-      title: "E-Commerce Redesign",
-      category: "E-commerce",
-      description: "Increased conversion rates by 150% through UX improvements and mobile-first design.",
-      client: "StyleSpace",
-      year: "2024",
-      link: "/case-studies/ecommerce",
-      stats: ["150%", "Conversion Rate", "Increase"]
+      id: '1',
+      title: 'E-commerce Platform Redesign',
+      description: 'Complete redesign of a major e-commerce platform, focusing on user experience and conversion optimization.',
+      category: 'E-commerce',
+      duration: '3 months',
+      imageUrl: '/images/case-studies/ecommerce.jpg',
+      slug: 'ecommerce'
     },
     {
-      title: "SaaS Platform",
-      category: "SaaS",
-      description: "Built a scalable design system that reduced development time and improved consistency.",
-      client: "CloudFlow",
-      year: "2024",
-      link: "/case-studies/saas",
-      stats: ["40%", "Development Time", "Reduction"]
+      id: '2',
+      title: 'SaaS Brand Identity',
+      description: 'Developing a cohesive brand identity and design system for a growing SaaS company.',
+      category: 'SaaS',
+      duration: '2 months',
+      imageUrl: '/images/case-studies/saas.jpg',
+      slug: 'saas'
     },
     {
-      title: "Mobile App",
-      category: "Mobile",
-      description: "Created an intuitive mobile experience with 98% user satisfaction and increased engagement.",
-      client: "FitTrack",
-      year: "2023",
-      link: "/case-studies/mobile-app",
-      stats: ["98%", "User", "Satisfaction"]
+      id: '3',
+      title: 'Healthcare App Design',
+      description: 'User-centered design for a healthcare monitoring application, improving patient engagement.',
+      category: 'Healthcare',
+      duration: '4 months',
+      imageUrl: '/images/case-studies/healthcare.jpg',
+      slug: 'healthcare'
     }
   ];
 
-  const featuredPosts: BlogPost[] = [
+  const featuredBlogPosts: BlogPost[] = [
     {
-      title: "The Future of UI Design: Trends to Watch in 2025",
-      category: "UI/UX Design",
-      date: "Feb 15, 2025",
-      readTime: "5 min read",
-      excerpt: "Explore emerging UI design trends that will shape the digital landscape in 2025 and beyond.",
-      link: "/blog/ui-design-trends-2025"
+      id: '1',
+      title: 'The Impact of Microinteractions on User Experience',
+      description: 'How small interactions can make a big difference in your digital product.',
+      category: 'UI/UX Design',
+      publishedAt: 'Feb 15, 2024',
+      readingTime: '5 min read',
+      slug: 'microinteractions-impact'
     },
     {
-      title: "Building Brand Identity in the Digital Age",
-      category: "Branding",
-      date: "Feb 10, 2025",
-      readTime: "7 min read",
-      excerpt: "Learn how to create and maintain a strong brand identity in today's fast-paced digital environment.",
-      link: "/blog/brand-identity-digital-age"
+      id: '2',
+      title: 'Building a Strong Brand Identity',
+      description: 'Essential steps to create a memorable and effective brand identity.',
+      category: 'Branding',
+      publishedAt: 'Feb 10, 2024',
+      readingTime: '7 min read',
+      slug: 'brand-identity'
     },
     {
-      title: "Content Strategy: The Key to Digital Success",
-      category: "Content",
-      date: "Feb 5, 2025",
-      readTime: "6 min read",
-      excerpt: "Discover how a well-planned content strategy can drive engagement and conversions.",
-      link: "/blog/content-strategy-success"
+      id: '3',
+      title: 'Content Strategy for Growth',
+      description: 'Developing a content strategy that drives engagement and conversions.',
+      category: 'Content',
+      publishedAt: 'Feb 5, 2024',
+      readingTime: '6 min read',
+      slug: 'content-strategy'
     }
   ];
 
@@ -74,26 +77,33 @@ export default function Home() {
       <AssessmentPanel isOpen={isAssessmentOpen} setIsOpen={setIsAssessmentOpen} />
       <main className="max-w-[1440px] mx-auto px-4">
         {/* Hero Section */}
-        <section className="py-20 md:py-28">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent leading-[1.2] pb-1">
-                Leading Thoughts,{' '}
-                <span className="inline-block">Inspiring Change</span>
+        <section className="h-[calc(100vh-5rem)] flex items-center justify-center">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center text-center space-y-8">
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
+                Creating Digital Experiences <br className="hidden sm:block" />
+                That <span className="text-brand">Inspire Growth</span>
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                Discover insights that drive innovation and growth in the digital age. Join a community of forward-thinking leaders shaping the future.
+              <p className="text-gray-500 dark:text-gray-400 md:text-xl max-w-[42rem] mx-auto">
+                I'm a UX Designer and Developer focused on creating intuitive, user-centered digital solutions that drive business growth.
               </p>
-              <AssessmentButton onClick={() => setIsAssessmentOpen(true)} />
-            </div>
-            <div className="relative">
-              {/* Add hero image or illustration here */}
+              <div className="flex flex-col sm:flex-row gap-4 min-[400px]:flex-row">
+                <Button href="/get-started">
+                  Start Your Project
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => setIsAssessmentOpen(true)}
+                >
+                  Free Assessment
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Featured Case Studies */}
-        <section className="py-16 bg-gray-50 dark:bg-gray-900">
+        <section className="py-16">
           <div className="max-w-[1440px] mx-auto px-4">
             <div className="flex justify-between items-center mb-12">
               <div>
@@ -111,8 +121,8 @@ export default function Home() {
               </Link>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              {featuredCaseStudies.map((study, index) => (
-                <CaseStudyCard key={index} study={study} />
+              {featuredCaseStudies.map((caseStudy) => (
+                <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
               ))}
             </div>
           </div>
@@ -137,8 +147,8 @@ export default function Home() {
               </Link>
             </div>
             <div className="grid md:grid-cols-3 gap-8">
-              {featuredPosts.map((post, index) => (
-                <BlogCard key={index} post={post} />
+              {featuredBlogPosts.map((post) => (
+                <BlogCard key={post.id} post={post} />
               ))}
             </div>
           </div>
@@ -259,6 +269,7 @@ export default function Home() {
             </p>
             <div className="text-center">
               <Button
+                as="a"
                 href="mailto:your.email@example.com"
                 size="lg"
               >
