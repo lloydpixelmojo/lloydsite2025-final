@@ -35,54 +35,82 @@ export default function Home() {
         {/* Featured Case Studies */}
         <section className="py-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Case Studies</h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">Featured Case Studies</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Explore some of our most impactful projects and the results we've achieved for our clients.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Case Study 1 */}
-            <div className="group relative overflow-hidden rounded-2xl">
-              <div className="relative w-full pb-[56.25%] bg-gray-100 dark:bg-gray-800">
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30"></div>
+            {[
+              {
+                title: "E-Commerce Redesign",
+                category: "E-commerce",
+                description: "Increased conversion rates by 150% through UX improvements and mobile-first design.",
+                client: "StyleSpace",
+                year: "2024",
+                link: "/case-studies/ecommerce"
+              },
+              {
+                title: "SaaS Platform",
+                category: "SaaS",
+                description: "Built a scalable design system that reduced development time and improved consistency.",
+                client: "CloudFlow",
+                year: "2024",
+                link: "/case-studies/saas"
+              },
+              {
+                title: "Mobile App",
+                category: "Mobile",
+                description: "Created an intuitive mobile experience with 98% user satisfaction and increased engagement.",
+                client: "FitTrack",
+                year: "2023",
+                link: "/case-studies/mobile-app"
+              }
+            ].map((study, index) => (
+              <div key={index} className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white">
+                    <div className="absolute inset-0 bg-gray-500/5 transform group-hover:scale-105 transition-transform duration-500"></div>
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 text-sm font-medium bg-white/90 text-gray-600 rounded-full">
+                      {study.category}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-gray-600 transition-colors">
+                      {study.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {study.description}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="text-sm">
+                        <span className="text-gray-500">Client:</span>
+                        <span className="ml-1 font-medium text-gray-900">{study.client}</span>
+                      </div>
+                      <div className="text-sm">
+                        <span className="text-gray-500">Year:</span>
+                        <span className="ml-1 font-medium text-gray-900">{study.year}</span>
+                      </div>
+                    </div>
+                    <Link 
+                      href={study.link}
+                      className="inline-flex items-center text-gray-600 hover:text-gray-900"
+                    >
+                      View Case Study
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">E-Commerce Redesign</h3>
-                <p className="text-gray-600 dark:text-gray-300">Increased conversion rates by 150% through UX improvements.</p>
-                <Link href="/case-studies/ecommerce" className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700">
-                  View Case Study →
-                </Link>
-              </div>
-            </div>
-            {/* Case Study 2 */}
-            <div className="group relative overflow-hidden rounded-2xl">
-              <div className="relative w-full pb-[56.25%] bg-gray-100 dark:bg-gray-800">
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">SaaS Platform</h3>
-                <p className="text-gray-600 dark:text-gray-300">Built a scalable design system that reduced development time.</p>
-                <Link href="/case-studies/saas" className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700">
-                  View Case Study →
-                </Link>
-              </div>
-            </div>
-            {/* Case Study 3 */}
-            <div className="group relative overflow-hidden rounded-2xl">
-              <div className="relative w-full pb-[56.25%] bg-gray-100 dark:bg-gray-800">
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30"></div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Mobile App</h3>
-                <p className="text-gray-600 dark:text-gray-300">Created an intuitive mobile experience with 98% user satisfaction.</p>
-                <Link href="/case-studies/mobile-app" className="mt-4 inline-flex items-center text-blue-600 hover:text-blue-700">
-                  View Case Study →
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
@@ -207,47 +235,82 @@ export default function Home() {
         </section>
 
         {/* Featured Content */}
-        <section className="py-16 mb-24">
+        <section className="py-16 border-t border-gray-100">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Featured Content</h2>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Explore our latest insights and thoughts on design, development, and digital strategy.
+            <h2 className="text-3xl font-bold mb-4 text-gray-900">Featured Content</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Insights and thoughts on design, development, and digital transformation.
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Blog Post 1 */}
-            <article className="group">
-              <div className="relative w-full pb-[56.25%] mb-4 bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden">
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30"></div>
+            {[
+              {
+                title: "The Impact of Microinteractions",
+                category: "UX Design",
+                date: "Feb 16, 2024",
+                readTime: "5 min read",
+                excerpt: "Discover how small interactions can make a big difference in your digital product's user experience.",
+                link: "/blog/microinteractions-impact"
+              },
+              {
+                title: "Building Scalable Design Systems",
+                category: "Development",
+                date: "Feb 14, 2024",
+                readTime: "7 min read",
+                excerpt: "Learn the key principles behind creating design systems that grow with your product.",
+                link: "/blog/scalable-design-systems"
+              },
+              {
+                title: "The Future of Web Animation",
+                category: "Trends",
+                date: "Feb 12, 2024",
+                readTime: "4 min read",
+                excerpt: "Exploring the latest trends and techniques in web animation and motion design.",
+                link: "/blog/web-animation-future"
+              }
+            ].map((post, index) => (
+              <div key={index} className="group bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-lg transition-all duration-300">
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-white">
+                    <div className="absolute inset-0 bg-gray-500/5 transform group-hover:scale-105 transition-transform duration-500"></div>
+                  </div>
+                  <div className="absolute bottom-4 left-4">
+                    <span className="px-3 py-1 text-sm font-medium bg-white/90 text-gray-600 rounded-full">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="text-sm text-gray-500">
+                      {post.readTime}
+                    </span>
+                  </div>
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900 group-hover:text-gray-600 transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {post.excerpt}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500">
+                      {post.date}
+                    </span>
+                    <Link 
+                      href={post.link}
+                      className="inline-flex items-center text-gray-600 hover:text-gray-900"
+                    >
+                      Read More
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600">
-                <Link href="/blog/post-1">The Future of Web Design</Link>
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">Exploring upcoming trends and technologies shaping the web.</p>
-            </article>
-            {/* Blog Post 2 */}
-            <article className="group">
-              <div className="relative w-full pb-[56.25%] mb-4 bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden">
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30"></div>
-              </div>
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600">
-                <Link href="/blog/post-2">Building Design Systems</Link>
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">A comprehensive guide to creating scalable design systems.</p>
-            </article>
-            {/* Blog Post 3 */}
-            <article className="group">
-              <div className="relative w-full pb-[56.25%] mb-4 bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden">
-                {/* Replace with actual image */}
-                <div className="absolute inset-0 bg-blue-100 dark:bg-blue-900/30"></div>
-              </div>
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600">
-                <Link href="/blog/post-3">UX Research Methods</Link>
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">Essential research methods for better user experiences.</p>
-            </article>
+            ))}
           </div>
         </section>
 
