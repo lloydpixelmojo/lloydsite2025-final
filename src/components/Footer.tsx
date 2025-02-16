@@ -35,7 +35,7 @@ export default function Footer() {
     <footer className="bg-gray-50 dark:bg-gray-900">
       {/* Newsletter Section */}
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="rounded-2xl bg-blue-600/5 dark:bg-blue-400/5 px-6 py-10 sm:py-12 sm:px-12">
+        <div className="rounded-2xl bg-brand-100/5 dark:bg-brand-400/5 px-6 py-10 sm:py-12 sm:px-12">
           <div className="max-w-xl mx-auto text-center">
             <h2 className="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
               Stay Ahead of the Curve
@@ -62,7 +62,7 @@ export default function Footer() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="flex-none rounded-lg bg-blue-600 dark:bg-blue-500 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-500 dark:hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-900 disabled:opacity-75 disabled:cursor-not-allowed"
+                className="flex-none rounded-lg bg-brand px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-brand-400 dark:hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand dark:focus:ring-offset-gray-900 disabled:opacity-75 disabled:cursor-not-allowed"
               >
                 {status === 'loading' ? (
                   <div className="flex items-center">

@@ -44,7 +44,7 @@ export default function CaseStudy() {
         <div className="mb-6">
           <Link 
             href="/case-studies" 
-            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 inline-flex items-center"
+            className="text-brand hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300 inline-flex items-center"
           >
             <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
@@ -54,8 +54,8 @@ export default function CaseStudy() {
         </div>
         <h1 className="text-4xl md:text-5xl font-bold mb-6">{caseStudy.title}</h1>
         <div className="flex flex-wrap gap-4 text-sm mb-8">
-          <div className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-            <span className="text-blue-600 dark:text-blue-400">{caseStudy.category}</span>
+          <div className="px-3 py-1 bg-brand-100 dark:bg-brand-900/30 rounded-full">
+            <span className="text-brand-600 dark:text-brand-400">{caseStudy.category}</span>
           </div>
           <div className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">
             <span className="text-gray-600 dark:text-gray-400">{caseStudy.duration}</span>
@@ -73,7 +73,7 @@ export default function CaseStudy() {
       <div className="grid md:grid-cols-3 gap-6 mb-16">
         {caseStudy.metrics.map((metric, index) => (
           <div key={index} className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
-            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+            <div className="text-3xl font-bold text-brand dark:text-brand-400 mb-2">
               {metric.value}
             </div>
             <div className="font-medium mb-2">{metric.label}</div>
@@ -134,7 +134,7 @@ export default function CaseStudy() {
           <h3 className="text-2xl font-bold mb-6">SaaS Brand Identity</h3>
           <Link 
             href="/case-studies/saas" 
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium"
+            className="inline-flex items-center text-brand hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300 font-medium"
           >
             View case study
             <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">

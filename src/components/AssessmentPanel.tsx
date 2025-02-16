@@ -232,17 +232,17 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                         {currentStep === 'questions' && (
                           <>
                             <Tab.Group selectedIndex={selectedTab} onChange={setSelectedTab}>
-                              <Tab.List className="flex space-x-1 rounded-xl bg-blue-100 dark:bg-blue-900/20 p-1">
+                              <Tab.List className="flex space-x-1 rounded-xl bg-brand-100 dark:bg-brand-900/20 p-1">
                                 {assessmentTypes.map((type) => (
                                   <Tab
                                     key={type.name}
                                     className={({ selected }) =>
                                       classNames(
                                         'w-full rounded-lg py-3 text-sm font-medium leading-5',
-                                        'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2',
+                                        'ring-white/60 ring-offset-2 ring-offset-brand-400 focus:outline-none focus:ring-2',
                                         selected
-                                          ? 'bg-white dark:bg-gray-800 text-blue-700 dark:text-blue-400 shadow'
-                                          : 'text-gray-600 dark:text-gray-400 hover:bg-white/[0.12] hover:text-blue-700 dark:hover:text-blue-400'
+                                          ? 'bg-white dark:bg-gray-800 text-brand dark:text-brand-400 shadow'
+                                          : 'text-gray-600 dark:text-gray-400 hover:bg-white/[0.12] hover:text-brand dark:hover:text-brand-400'
                                       )
                                     }
                                   >
@@ -256,7 +256,7 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                     key={type.name}
                                     className={classNames(
                                       'rounded-xl bg-white dark:bg-gray-800 p-6',
-                                      'ring-white/60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
+                                      'ring-white/60 ring-offset-2 ring-offset-brand-400 focus:outline-none focus:ring-2'
                                     )}
                                   >
                                     <div className="space-y-6">
@@ -273,8 +273,8 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                                 className={classNames(
                                                   'w-full text-left px-3 py-2 text-sm rounded-lg border transition-colors',
                                                   answers[question.id] === option.score
-                                                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20'
-                                                    : 'border-gray-200 dark:border-gray-700 hover:border-blue-600'
+                                                    ? 'border-brand bg-brand-50 dark:bg-brand-900/20'
+                                                    : 'border-gray-200 dark:border-gray-700 hover:border-brand'
                                                 )}
                                               >
                                                 {option.text}
@@ -295,7 +295,7 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                 className={classNames(
                                   'w-full rounded-lg px-4 py-3 text-sm font-semibold text-white shadow-sm',
                                   isQuestionnaireComplete()
-                                    ? 'bg-blue-600 hover:bg-blue-700'
+                                    ? 'bg-brand hover:bg-brand-600'
                                     : 'bg-gray-400 cursor-not-allowed'
                                 )}
                               >
@@ -311,7 +311,7 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
                                 Your {assessmentTypes[selectedTab].name} Score
                               </h3>
-                              <div className="text-5xl font-bold text-blue-600 mb-4">
+                              <div className="text-5xl font-bold text-brand mb-4">
                                 {calculateScore()}%
                               </div>
                               <p className="text-gray-600 dark:text-gray-300">
@@ -325,7 +325,7 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                               <ul className="space-y-2">
                                 {assessmentTypes[selectedTab].questions.map((question) => (
                                   <li key={question.id} className="flex items-start gap-2">
-                                    <svg className="h-6 w-6 flex-none text-blue-600 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                                    <svg className="h-6 w-6 flex-none text-brand mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
                                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                     <span className="text-gray-600 dark:text-gray-300">
@@ -338,13 +338,13 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                             <div className="flex gap-4">
                               <button
                                 onClick={handleBack}
-                                className="w-1/2 rounded-lg px-4 py-3 text-sm font-semibold border-2 border-gray-200 dark:border-gray-700 hover:border-blue-600"
+                                className="w-1/2 rounded-lg px-4 py-3 text-sm font-semibold border-2 border-gray-200 dark:border-gray-700 hover:border-brand"
                               >
                                 Back
                               </button>
                               <button
                                 onClick={handleNext}
-                                className="w-1/2 rounded-lg px-4 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700"
+                                className="w-1/2 rounded-lg px-4 py-3 text-sm font-semibold text-white bg-brand hover:bg-brand-600"
                               >
                                 Get Full Report
                               </button>
@@ -373,7 +373,7 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                   required
                                   value={formData.name}
                                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                   placeholder="John Doe"
                                 />
                               </div>
@@ -387,7 +387,7 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                   required
                                   value={formData.email}
                                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                   placeholder="john@example.com"
                                 />
                               </div>
@@ -401,7 +401,7 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                   required
                                   value={formData.company}
                                   onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm bg-white dark:bg-gray-800 focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                                   placeholder="Acme Inc."
                                 />
                               </div>
@@ -409,13 +409,13 @@ export function AssessmentPanel({ isOpen, setIsOpen }: AssessmentPanelProps) {
                                 <button
                                   type="button"
                                   onClick={handleBack}
-                                  className="w-1/2 rounded-lg px-3 py-2 text-sm font-medium border border-gray-300 dark:border-gray-600 hover:border-blue-600 dark:hover:border-blue-500"
+                                  className="w-1/2 rounded-lg px-3 py-2 text-sm font-medium border border-gray-300 dark:border-gray-600 hover:border-brand"
                                 >
                                   Back
                                 </button>
                                 <button
                                   type="submit"
-                                  className="w-1/2 rounded-lg px-3 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+                                  className="w-1/2 rounded-lg px-3 py-2 text-sm font-medium text-white bg-brand hover:bg-brand-600"
                                 >
                                   Send Report
                                 </button>

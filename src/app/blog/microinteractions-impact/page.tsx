@@ -142,8 +142,8 @@ const RichTextContent = ({ content }: { content: any[] }) => {
             )
           case 'callout':
             return (
-              <div key={index} className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 my-6 rounded-r">
-                <p className="text-blue-800 dark:text-blue-200">{block.children[0].text}</p>
+              <div key={index} className="bg-brand-50 dark:bg-brand-900/20 border-l-4 border-brand p-4 my-6 rounded-r">
+                <p className="text-brand-800 dark:text-brand-200">{block.children[0].text}</p>
               </div>
             )
           case 'codeBlock':
@@ -168,7 +168,7 @@ export default function BlogPost() {
         <div className="mb-6">
           <Link 
             href="/blog" 
-            className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 inline-flex items-center"
+            className="text-brand hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300 inline-flex items-center"
           >
             <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
@@ -188,8 +188,8 @@ export default function BlogPost() {
         <h1 className="text-4xl md:text-5xl font-bold mb-6">{blogPost.title}</h1>
         
         <div className="flex flex-wrap gap-4 text-sm mb-8">
-          <div className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-            <span className="text-blue-600 dark:text-blue-400">{blogPost.category}</span>
+          <div className="px-3 py-1 bg-brand-100 dark:bg-brand-900/30 rounded-full">
+            <span className="text-brand-600 dark:text-brand-400">{blogPost.category}</span>
           </div>
           <div className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">
             <span className="text-gray-600 dark:text-gray-400">{blogPost.publishedAt}</span>
@@ -221,7 +221,7 @@ export default function BlogPost() {
               className="group"
             >
               <div className="w-full aspect-video bg-gray-200 dark:bg-gray-700 rounded-xl mb-4 group-hover:opacity-90 transition-opacity" />
-              <h3 className="font-semibold text-xl mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h3 className="font-semibold text-xl mb-2 group-hover:text-brand dark:group-hover:text-brand-400 transition-colors">
                 {post.title}
               </h3>
               <p className="text-gray-600 dark:text-gray-400">
@@ -246,7 +246,7 @@ export default function BlogPost() {
           />
           <button
             type="submit"
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+            className="px-6 py-2 bg-brand hover:bg-brand-600 text-white rounded-lg transition-colors"
           >
             Subscribe
           </button>

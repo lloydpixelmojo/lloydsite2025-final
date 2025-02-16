@@ -43,11 +43,28 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: {
+          DEFAULT: "#E9264A",
+          light: "#f14d6c",
+          dark: "#d11f40",
+          50: "#fdf2f4",
+          100: "#fce7eb",
+          200: "#f9d0d8",
+          300: "#f5a9b7",
+          400: "#f14d6c",
+          500: "#e9264a",
+          600: "#d11f40",
+          700: "#b01836",
+          800: "#931830",
+          900: "#7c172c",
+          950: "#430b15",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        btn: "9999px", // For pill-shaped buttons
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
