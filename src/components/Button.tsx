@@ -1,9 +1,11 @@
 import { ButtonHTMLAttributes } from 'react';
 import { twMerge } from 'tailwind-merge';
+import Link from 'next/link';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
+  href?: string;
 }
 
 const variantStyles = {
@@ -24,16 +26,27 @@ export default function Button({
   variant = 'primary',
   size = 'md',
   className,
+  href,
   ...props
 }: ButtonProps) {
+  const styles = twMerge(
+    baseStyles,
+    variantStyles[variant],
+    sizeStyles[size],
+    className
+  );
+
+  if (href) {
+    return (
+      <Link href={href} className={styles}>
+        {props.children}
+      </Link>
+    );
+  }
+
   return (
     <button
-      className={twMerge(
-        baseStyles,
-        variantStyles[variant],
-        sizeStyles[size],
-        className
-      )}
+      className={styles}
       {...props}
     />
   );

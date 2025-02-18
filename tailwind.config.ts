@@ -59,6 +59,26 @@ const config: Config = {
           900: "#7c172c",
           950: "#430b15",
         },
+        'off-white': '#FCFCFC',
+        light: "#FCFCFC",
+        gray: {
+          900: "#333333",
+        },
+        dark: {
+          DEFAULT: '#1A1A1A',
+          100: '#FCFCFC', 
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#999999',
+          600: '#808080',
+          700: '#666666',
+          800: '#404040',
+          900: '#1A1A1A',
+        }
+      },
+      backgroundColor: {
+        light: '#FCFCFC',
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

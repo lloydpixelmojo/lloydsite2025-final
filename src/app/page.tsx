@@ -12,88 +12,98 @@ import Button from '@/components/Button';
 export default function Home() {
   const [isAssessmentOpen, setIsAssessmentOpen] = useState(false);
 
-  const featuredCaseStudies: CaseStudy[] = [
+  const featuredCaseStudies = [
     {
-      id: '1',
-      title: 'E-commerce Platform Redesign',
-      description: 'Complete redesign of a major e-commerce platform, focusing on user experience and conversion optimization.',
-      category: 'E-commerce',
-      duration: '3 months',
-      imageUrl: '/images/case-studies/ecommerce.jpg',
-      slug: 'ecommerce'
+      title: "E-commerce Platform Redesign",
+      description: "Complete overhaul of user experience leading to 45% increase in conversions",
+      image: "/images/case-studies/ecommerce.jpg",
+      category: "UX Design",
+      metrics: [
+        { label: "Conversion Rate", value: "+45%" },
+        { label: "User Engagement", value: "+60%" }
+      ],
+      href: "/case-studies/ecommerce-redesign"
     },
     {
-      id: '2',
-      title: 'SaaS Brand Identity',
-      description: 'Developing a cohesive brand identity and design system for a growing SaaS company.',
-      category: 'SaaS',
-      duration: '2 months',
-      imageUrl: '/images/case-studies/saas.jpg',
-      slug: 'saas'
+      title: "Healthcare App Development",
+      description: "Patient-centric mobile app improving healthcare accessibility",
+      image: "/images/case-studies/healthcare.jpg",
+      category: "Development",
+      metrics: [
+        { label: "User Adoption", value: "50K+" },
+        { label: "App Rating", value: "4.8" }
+      ],
+      href: "/case-studies/healthcare-app"
     },
     {
-      id: '3',
-      title: 'Healthcare App Design',
-      description: 'User-centered design for a healthcare monitoring application, improving patient engagement.',
-      category: 'Healthcare',
-      duration: '4 months',
-      imageUrl: '/images/case-studies/healthcare.jpg',
-      slug: 'healthcare'
+      title: "Brand Identity System",
+      description: "Comprehensive brand evolution for a tech startup",
+      image: "/images/case-studies/brand.jpg",
+      category: "Branding",
+      metrics: [
+        { label: "Brand Recognition", value: "+85%" },
+        { label: "Market Growth", value: "3x" }
+      ],
+      href: "/case-studies/brand-identity"
     }
   ];
 
-  const featuredBlogPosts: BlogPost[] = [
+  const blogPosts = [
     {
-      id: '1',
-      title: 'The Impact of Microinteractions on User Experience',
-      description: 'How small interactions can make a big difference in your digital product.',
-      category: 'UI/UX Design',
-      publishedAt: 'Feb 15, 2024',
-      readingTime: '5 min read',
-      slug: 'microinteractions-impact'
+      title: "The Evolution of UI Design: 2025 Trends and Beyond",
+      excerpt: "Dive deep into the transformative UI design trends of 2025, from adaptive interfaces to neomorphic evolution.",
+      image: "/images/blog/ui-design-trends.jpg",
+      category: "UI Design",
+      date: "Feb 18, 2025",
+      readTime: "8 min read",
+      href: "/blog/ui-design-trends-2025"
     },
     {
-      id: '2',
-      title: 'Building a Strong Brand Identity',
-      description: 'Essential steps to create a memorable and effective brand identity.',
-      category: 'Branding',
-      publishedAt: 'Feb 10, 2024',
-      readingTime: '7 min read',
-      slug: 'brand-identity'
+      title: "Building Scalable Systems in 2025",
+      excerpt: "Learn the latest best practices for creating maintainable and scalable applications that can handle millions of users.",
+      image: "/images/blog/scalable-systems.jpg",
+      category: "Development",
+      date: "Feb 15, 2025",
+      readTime: "7 min read",
+      href: "/blog/scalable-systems-2025"
     },
     {
-      id: '3',
-      title: 'Content Strategy for Growth',
-      description: 'Developing a content strategy that drives engagement and conversions.',
-      category: 'Content',
-      publishedAt: 'Feb 5, 2024',
-      readingTime: '6 min read',
-      slug: 'content-strategy'
+      title: "The Power of Design Systems",
+      excerpt: "Discover how design systems are revolutionizing product development and enabling teams to build better products faster.",
+      image: "/images/blog/design-systems.jpg",
+      category: "Design Systems",
+      date: "Feb 12, 2025",
+      readTime: "6 min read",
+      href: "/blog/power-of-design-systems"
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-light dark:bg-gray-900">
       <AssessmentPanel isOpen={isAssessmentOpen} setIsOpen={setIsAssessmentOpen} />
       <main className="max-w-[1440px] mx-auto px-4">
         {/* Hero Section */}
-        <section className="h-[calc(100vh-5rem)] flex items-center justify-center">
+        <section className="min-h-[calc(100vh-5rem)] flex items-center justify-center py-16 md:py-20">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center text-center space-y-8">
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
-                Creating Digital Experiences <br className="hidden sm:block" />
-                That <span className="text-brand">Inspire Growth</span>
+            <div className="flex flex-col items-center text-center space-y-6 md:space-y-8">
+              <h1 className="text-[42px] font-bold tracking-tighter sm:text-[50px] md:text-[62px] lg:text-[86px] xl:text-[118px] max-w-5xl leading-[1.1] text-gray-900 dark:text-dark-100">
+                Leading Thoughts, <br className="hidden sm:block" />
+                <span className="text-brand">Inspiring Change</span>
               </h1>
-              <p className="text-gray-500 dark:text-gray-400 md:text-xl max-w-[42rem] mx-auto">
-                I'm a UX Designer and Developer focused on creating intuitive, user-centered digital solutions that drive business growth.
+              <p className="text-base md:text-lg text-gray-600 dark:text-dark-300 max-w-3xl">
+                Gain valuable insights at the intersection of design, technology, and business. Our in-depth case studies and thought-provoking articles will empower you to drive digital innovation.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 min-[400px]:flex-row">
-                <Button href="/get-started">
-                  Start Your Project
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full sm:w-auto">
+                <Button 
+                  href="/case-studies"
+                  className="bg-brand hover:bg-brand/90 text-white w-full sm:w-auto text-base md:text-lg py-3 px-6"
+                >
+                  Explore Our Insights
                 </Button>
                 <Button 
-                  variant="outline"
                   onClick={() => setIsAssessmentOpen(true)}
+                  variant="outline"
+                  className="w-full sm:w-auto text-base md:text-lg py-3 px-6"
                 >
                   Free Assessment
                 </Button>
@@ -102,178 +112,83 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Video Section */}
+        <section className="py-12 md:py-20 bg-gray-50 dark:bg-gray-900">
+          <div className="container px-4 md:px-6 mx-auto">
+            <div className="relative aspect-video max-w-4xl mx-auto rounded-xl md:rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+              {/* Video Thumbnail */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-900/20 to-gray-900/60">
+                <Image
+                  src="/images/video-thumbnail.jpg"
+                  alt="Featured Video Thumbnail"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              
+              {/* Play Button */}
+              <button className="absolute inset-0 flex items-center justify-center group">
+                <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-900/90 group-hover:scale-110 transition-transform duration-200">
+                  <svg 
+                    className="w-6 h-6 md:w-8 md:h-8 text-brand group-hover:text-brand/80 transition-colors" 
+                    fill="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+                <span className="sr-only">Play video</span>
+              </button>
+
+              {/* Video Info */}
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-gradient-to-t from-gray-900 to-transparent">
+                <h3 className="text-lg md:text-2xl font-bold text-white mb-1 md:mb-2">
+                  The Future of Digital Innovation
+                </h3>
+                <p className="text-sm md:text-base text-gray-200">
+                  A deep dive into emerging trends and their impact on business transformation
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Featured Case Studies */}
-        <section className="py-16">
-          <div className="max-w-[1440px] mx-auto px-4">
-            <div className="flex justify-between items-center mb-12">
-              <div>
-                <span className="inline-block text-[#E9264A] text-sm font-medium tracking-wider uppercase mb-4">Portfolio</span>
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Featured Case Studies</h2>
-              </div>
-              <Link 
-                href="/case-studies"
-                className="inline-flex items-center text-[#E9264A] hover:text-[#d11f40]"
-              >
+        <section className="py-12 md:py-20">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-3 md:mb-4">Featured Case Studies</h2>
+              <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400">Deep dives into transformative digital projects</p>
+            </div>
+            <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {featuredCaseStudies.map((study, index) => (
+                <CaseStudyCard key={index} {...study} />
+              ))}
+            </div>
+            <div className="text-center mt-8 md:mt-12">
+              <Button href="/case-studies" variant="outline" className="w-full sm:w-auto">
                 View All Case Studies
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              </Button>
             </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {featuredCaseStudies.map((caseStudy) => (
-                <CaseStudyCard key={caseStudy.id} caseStudy={caseStudy} />
+          </div>
+        </section>
+
+        {/* Latest Articles */}
+        <section className="py-12 md:py-20 bg-light dark:bg-gray-900">
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-8 md:mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter mb-3 md:mb-4 text-gray-900 dark:text-dark-100">Latest Articles</h2>
+              <p className="text-lg md:text-xl text-gray-500 dark:text-dark-300">Insights on design, development, and digital innovation</p>
+            </div>
+            <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {blogPosts.map((post, index) => (
+                <BlogCard key={index} {...post} />
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Featured Blog Posts */}
-        <section className="py-16 bg-white dark:bg-gray-800">
-          <div className="max-w-[1440px] mx-auto px-4">
-            <div className="flex justify-between items-center mb-12">
-              <div>
-                <span className="inline-block text-[#E9264A] text-sm font-medium tracking-wider uppercase mb-4">Blog</span>
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Leading Thoughts, Inspiring Change</h2>
-              </div>
-              <Link 
-                href="/blog"
-                className="inline-flex items-center text-[#E9264A] hover:text-[#d11f40]"
-              >
-                View All Posts
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-            <div className="grid md:grid-cols-3 gap-8">
-              {featuredBlogPosts.map((post) => (
-                <BlogCard key={post.id} post={post} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section className="py-24 bg-white dark:bg-gray-800">
-          <div className="max-w-[1440px] mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
-                Transform Your Digital Presence
-              </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
-                We blend creativity with strategy to deliver exceptional digital experiences that drive real business results.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-12">
-              {/* UI/UX Excellence */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  UI/UX Excellence
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Transform user experiences through research-driven design, seamless interactions, and pixel-perfect interfaces.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    User Research & Testing
-                  </li>
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Wireframing & Prototyping
-                  </li>
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Design Systems
-                  </li>
-                </ul>
-              </div>
-
-              {/* Brand Strategy */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Brand Strategy
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Craft compelling brand narratives that resonate with your audience and stand out in today's digital landscape.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Brand Identity Design
-                  </li>
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Visual Guidelines
-                  </li>
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Brand Voice & Messaging
-                  </li>
-                </ul>
-              </div>
-
-              {/* Content Marketing */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Content Marketing
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Create strategic content that engages your audience, drives organic traffic, and converts visitors into customers.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    SEO Optimization
-                  </li>
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Content Strategy
-                  </li>
-                  <li className="flex items-center text-gray-700 dark:text-gray-200">
-                    <svg className="w-5 h-5 mr-2 text-[#E9264A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    Performance Analytics
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section id="contact" className="py-24">
-          <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
-            <p className="text-gray-600 dark:text-gray-300 text-center mb-12">
-              Have a project in mind? Let's work together to create something amazing.
-            </p>
-            <div className="text-center">
-              <Button
-                as="a"
-                href="mailto:your.email@example.com"
-                size="lg"
-              >
-                Send me an email
+            <div className="text-center mt-8 md:mt-12">
+              <Button href="/blog" variant="outline" className="w-full sm:w-auto">
+                View All Articles
               </Button>
             </div>
           </div>

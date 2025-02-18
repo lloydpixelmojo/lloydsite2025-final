@@ -1,82 +1,94 @@
-import Link from 'next/link';
 import CaseStudyCard, { CaseStudy } from '@/components/CaseStudyCard';
 
 export default function CaseStudies() {
   const studies: CaseStudy[] = [
     {
       title: "E-Commerce Redesign",
-      category: "E-commerce",
       description: "Increased conversion rates by 150% through UX improvements and mobile-first design.",
-      client: "StyleSpace",
-      year: "2024",
-      link: "/case-studies/ecommerce",
-      stats: ["150%", "Conversion Rate", "Increase"]
+      image: "/images/case-studies/ecommerce.jpg",
+      category: "E-commerce",
+      metrics: [
+        { label: "Conversion Rate", value: "+150%" },
+        { label: "Mobile Traffic", value: "+80%" }
+      ],
+      href: "/case-studies/ecommerce"
     },
     {
       title: "SaaS Platform",
-      category: "SaaS",
       description: "Built a scalable design system that reduced development time and improved consistency.",
-      client: "CloudFlow",
-      year: "2024",
-      link: "/case-studies/saas",
-      stats: ["40%", "Development Time", "Reduction"]
+      image: "/images/case-studies/saas.jpg",
+      category: "SaaS",
+      metrics: [
+        { label: "Development Time", value: "-40%" },
+        { label: "Code Reuse", value: "+65%" }
+      ],
+      href: "/case-studies/saas"
     },
     {
       title: "Mobile App",
-      category: "Mobile",
       description: "Created an intuitive mobile experience with 98% user satisfaction and increased engagement.",
-      client: "FitTrack",
-      year: "2023",
-      link: "/case-studies/mobile-app",
-      stats: ["98%", "User", "Satisfaction"]
+      image: "/images/case-studies/mobile-app.jpg",
+      category: "Mobile",
+      metrics: [
+        { label: "User Satisfaction", value: "98%" },
+        { label: "Daily Active Users", value: "50K+" }
+      ],
+      href: "/case-studies/mobile-app"
     },
     {
       title: "Healthcare Dashboard",
-      category: "Healthcare",
       description: "Developed an intuitive analytics dashboard that improved decision-making efficiency by 40%.",
-      client: "MedTech Solutions",
-      year: "2023",
-      link: "/case-studies/healthcare",
-      stats: ["40%", "Efficiency", "Improvement"]
+      image: "/images/case-studies/healthcare.jpg",
+      category: "Healthcare",
+      metrics: [
+        { label: "Efficiency", value: "+40%" },
+        { label: "Data Processing", value: "2x Faster" }
+      ],
+      href: "/case-studies/healthcare"
     },
     {
       title: "Educational Platform",
-      category: "EdTech",
       description: "Created an engaging learning platform that increased student engagement by 75%.",
-      client: "EduLearn",
-      year: "2023",
-      link: "/case-studies/education",
-      stats: ["75%", "Student", "Engagement"]
+      image: "/images/case-studies/education.jpg",
+      category: "EdTech",
+      metrics: [
+        { label: "Student Engagement", value: "+75%" },
+        { label: "Course Completion", value: "+60%" }
+      ],
+      href: "/case-studies/education"
     },
     {
       title: "Financial App",
-      category: "FinTech",
       description: "Designed a secure and user-friendly financial management app with 99.9% uptime.",
-      client: "FinanceFlow",
-      year: "2023",
-      link: "/case-studies/fintech",
-      stats: ["99.9%", "System", "Uptime"]
+      image: "/images/case-studies/fintech.jpg",
+      category: "FinTech",
+      metrics: [
+        { label: "System Uptime", value: "99.9%" },
+        { label: "Transaction Speed", value: "<100ms" }
+      ],
+      href: "/case-studies/fintech"
     }
   ];
 
   return (
-    <main className="pt-24">
-      <section className="py-16 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-[1440px] mx-auto px-4">
-          <div className="text-center mb-12">
-            <span className="inline-block text-[#E9264A] text-sm font-medium tracking-wider uppercase mb-4">Portfolio</span>
-            <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Case Studies</h1>
-            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Explore our portfolio of successful projects and the impact we've made for our clients.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {studies.map((study, index) => (
-              <CaseStudyCard key={index} study={study} />
-            ))}
-          </div>
+    <div className="min-h-screen bg-light dark:bg-gray-900">
+      <main className="max-w-[1440px] mx-auto py-20 md:py-28 px-4">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-dark-100 mb-4">
+            Featured Case Studies
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-dark-300 max-w-2xl mx-auto">
+            Explore our portfolio of successful projects and the impact we've made for our clients.
+          </p>
         </div>
-      </section>
-    </main>
+
+        {/* Case Studies Grid */}
+        <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {studies.map((study, index) => (
+            <CaseStudyCard key={index} {...study} />
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }
